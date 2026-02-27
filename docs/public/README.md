@@ -6,6 +6,7 @@ This folder defines what can be published to the separate public repository for 
 
 Only the following artifacts are allowed:
 
+- `README.md` (public-facing repository overview; generated during export)
 - `docs/trust/*.md`
 - `docs/specs/trust/*.json`
 - `docs/flows/examples/trust-v2-*`
