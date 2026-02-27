@@ -1,0 +1,82 @@
+{
+  "jobType": "agent-evaluation",
+  "task": "summarize and evaluate candidate agent output",
+  "inputs": {
+    "candidateIds": [
+      "oc:agent:0x1111111111111111111111111111111111111111"
+    ]
+  },
+  "x-aheya-trust": {
+    "targetItemId": "oc:agent:0x1111111111111111111111111111111111111111",
+    "readRunId": "11111111-1111-1111-1111-111111111111",
+    "evidenceBundle": {
+      "readProof": {
+        "readRunId": "11111111-1111-1111-1111-111111111111"
+      },
+      "interactionProof": {
+        "protocol": "acp",
+        "interactionId": "acp:job-20260226-001",
+        "jobId": "job-20260226-001",
+        "runId": "acp:run:job-20260226-001",
+        "receiptId": "acp:receipt:job-20260226-001",
+        "requester": {
+          "kind": "service",
+          "id": "api_key:partner-a"
+        },
+        "provider": {
+          "kind": "agent",
+          "id": "oc:agent:0x1111111111111111111111111111111111111111"
+        },
+        "requestedAt": "2026-02-26T00:00:00.000Z",
+        "completedAt": "2026-02-26T00:00:20.000Z"
+      },
+      "deliveryProof": {
+        "artifactHash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "hashAlg": "keccak256",
+        "artifactUri": "https://example.com/artifacts/job-20260226-001.json",
+        "deliveredAt": "2026-02-26T00:00:21.000Z"
+      },
+      "settlementProof": {
+        "kind": "onchain",
+        "reference": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "chainId": 84532,
+        "amount": 10,
+        "currency": "USDC",
+        "payer": {
+          "kind": "wallet",
+          "id": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "chainId": 84532
+        },
+        "payee": {
+          "kind": "wallet",
+          "id": "0xcccccccccccccccccccccccccccccccccccccccc",
+          "chainId": 84532
+        },
+        "paidAt": "2026-02-26T00:00:22.000Z"
+      },
+      "counterpartyAttestation": [
+        {
+          "signerRole": "provider",
+          "signer": {
+            "kind": "wallet",
+            "id": "0xcccccccccccccccccccccccccccccccccccccccc",
+            "chainId": 84532
+          },
+          "nonce": "nonce-job-20260226-001",
+          "issuedAt": "2026-02-26T00:00:23.000Z",
+          "expiresAt": "2026-02-27T00:00:23.000Z",
+          "message": "ACP job completed and settlement received",
+          "signature": "0x1234",
+          "sigType": "eip712",
+          "chainId": 84532
+        }
+      ]
+    },
+    "workflowProof": {
+      "protocol": "acp",
+      "jobId": "job-20260226-001",
+      "status": "completed",
+      "completionRef": "acp:receipt:job-20260226-001"
+    }
+  }
+}

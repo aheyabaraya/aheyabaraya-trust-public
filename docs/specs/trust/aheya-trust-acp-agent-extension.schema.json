@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aheya.dev/schemas/trust/aheya-trust-acp-agent-extension-v2.json",
+  "title": "AHEYA Trust ACP Agent Profile Extension v2",
+  "description": "Vendor extension for ACP agent profile. Keep official ACP schema as source of truth and validate this extension additionally.",
+  "type": "object",
+  "properties": {
+    "x-aheya-trust": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "baseUrl",
+        "resolvePath",
+        "signalsPath",
+        "apiKeyEnvVar"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "const": true
+        },
+        "baseUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "resolvePath": {
+          "type": "string",
+          "const": "/api/v1/trust/resolve"
+        },
+        "signalsPath": {
+          "type": "string",
+          "const": "/api/v1/trust/signals"
+        },
+        "apiKeyEnvVar": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "readRunTtlHours": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 168,
+          "default": 24
+        },
+        "ownershipClaim": {
+          "type": "object",
+          "required": [
+            "initPath",
+            "completePath"
+          ],
+          "properties": {
+            "initPath": {
+              "type": "string",
+              "const": "/api/v1/trust/agents/claim/session/init"
+            },
+            "completePath": {
+              "type": "string",
+              "const": "/api/v1/trust/agents/claim/session/complete"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

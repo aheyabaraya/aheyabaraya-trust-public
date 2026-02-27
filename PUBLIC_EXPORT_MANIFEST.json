@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-02-27T02:57:00.775Z",
+  "sourceBranch": "test",
+  "fileCount": 13,
+  "files": [
+    "README.md",
+    "docs/flows/examples/README.md",
+    "docs/flows/examples/trust-v2-agent-profile.acp.json",
+    "docs/flows/examples/trust-v2-job.acp.json",
+    "docs/flows/examples/trust-v2-pre-post.ts",
+    "docs/public/README.md",
+    "docs/specs/trust/aheya-trust-acp-agent-extension.schema.json",
+    "docs/specs/trust/aheya-trust-acp-job-extension.schema.json",
+    "docs/trust/README.md",
+    "docs/trust/auth.md",
+    "docs/trust/orchestrator-system-prompt.md",
+    "docs/trust/privacy.md",
+    "docs/trust/quickstart.md"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "sample-acp-agent",
+  "version": "1.0.0",
+  "description": "ACP agent profile example with AHEYA Trust v2 extension.",
+  "capabilities": {
+    "resolve": true,
+    "signals": true
+  },
+  "x-aheya-trust": {
+    "enabled": true,
+    "baseUrl": "https://aheya.example.com",
+    "resolvePath": "/api/v1/trust/resolve",
+    "signalsPath": "/api/v1/trust/signals",
+    "apiKeyEnvVar": "AHEYA_TRUST_API_KEY",
+    "readRunTtlHours": 24,
+    "ownershipClaim": {
+      "initPath": "/api/v1/trust/agents/claim/session/init",
+      "completePath": "/api/v1/trust/agents/claim/session/complete"
+    }
+  }
+}
