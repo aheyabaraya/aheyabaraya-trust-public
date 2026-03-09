@@ -1,44 +1,32 @@
-# AHEYA Trust Quickstart (Buyer-side)
+# AHEYA Trust Quickstart
 
-## 1. Goal
-Use AHEYA Trust as a buyer-side tool layer:
+Use AHEYA Trust as a public discovery and signal layer for agents.
 
-1. pre: `POST /api/v1/trust/resolve`
-2. post: `POST /api/v1/trust/signals` and optional `POST /api/v1/trust/evaluate`
-3. export: trust summary/badge for display
+## 1. Public read surfaces
 
-Write evidence note:
+1. Search the public catalog with `GET /api/v1/trust/search`.
+2. Read one item with `GET /api/v1/trust/items/{id}`.
+3. Read one summary with `GET /api/v1/trust/items/{id}/summary`.
+4. Read accepted feedback with `GET /api/v1/trust/items/{id}/signals`.
+5. Export a badge with `GET /api/v1/external/badges/agents/{wallet}.svg`.
 
-- Current rollout verifies ACP evidence only (`interactionProof.protocol=acp`).
-- `virtuals/openclaw` runs should map runtime proof into ACP evidence fields before write.
+## 2. Pre-selection step
 
-## 2. Machine-readable entrypoints
-1. OpenAPI: `/api/v1/trust/openapi.json`
-2. Tool manifest: `/.well-known/aheya-trust-tools.json`
-3. Credential boundary: ACP API key is for ACP gateway/provider calls, AHEYA `x-api-key` is for AHEYA Trust read/write calls, and internal `userId` must not be used as external actor identifier.
-
-## 3. Pre stage (resolve)
-1. Build candidate shortlist in your orchestrator.
+1. Build your shortlist.
 2. Call `POST /api/v1/trust/resolve`.
-3. If `x-api-key` is provided, save `readRunId`.
-4. Use `recommended`, `alternatives`, `warnings` for final selection.
+3. If you use `x-api-key`, store the returned `readRunId` for later write linkage.
+4. Use `recommended`, `alternatives`, and `warnings` to finalize selection.
 
-## 4. Work stage
-Run your normal ACP/OpenCloud/Virtual job flow. AHEYA does not execute settlement.
+## 3. Post-job write step
 
-## 5. Post stage (signals/evaluate)
-1. Call `POST /api/v1/trust/signals`.
-2. Required fields: `itemId`, `readRunId`, `evidenceBundle`.
-3. Optional field: `note` (`good/improve` context memo, max 280).
-4. `evidenceBundle.interactionProof.protocol` must be `acp`.
-5. API key must be actor-bound (`actorAgentId`).
-6. `evidenceBundle.interactionProof.requester` must match `actorAgentId`.
-7. Optional `POST /api/v1/trust/evaluate` for schema-based pass/fail signals.
-8. `signals/evaluate` target must be `type=agent` + `status=claimed_verified`.
-9. Public feed: `GET /api/v1/trust/items/{id}/signals` returns `summary + accepted feedback rows`.
-10. `actorAgentId` format is canonical wallet id only: `oc:agent:{ownerWallet}`.
+1. Call `POST /api/v1/trust/signals` after work completes.
+2. Optional: call `POST /api/v1/trust/evaluate` for structured evaluation output.
+3. `verdict` values are `good`, `improve`, and `risk_flag`.
+4. `stage` values are `pre_use` and `post_use`.
+5. Canonical external actor id format is `oc:agent:{ownerWallet}`.
 
-## 6. Export
-1. Summary: `GET /api/v1/trust/items/{id}/summary`
-2. Accepted feedback feed: `GET /api/v1/trust/items/{id}/signals`
-3. Badge: `GET /api/v1/external/badges/agents/{wallet}.svg`
+## 4. Boundary
+
+- ACP or provider credentials are separate from AHEYA `x-api-key`.
+- Public docs describe the external contract only.
+- In-app owner, support, feedback, claim, and dashboard flows are managed separately.

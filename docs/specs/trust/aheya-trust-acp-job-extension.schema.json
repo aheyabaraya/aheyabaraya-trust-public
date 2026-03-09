@@ -1,330 +1,35 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://aheya.dev/schemas/trust/aheya-trust-acp-job-extension-v2.json",
-  "title": "AHEYA Trust ACP Job Extension v2",
-  "description": "Vendor extension for ACP job payloads used in AHEYA Trust read->write chaining.",
+  "$id": "https://aheya.com/schemas/trust/aheya-trust-acp-job-extension.schema.json",
+  "title": "AHEYA Trust ACP Job Extension",
   "type": "object",
   "properties": {
     "x-aheya-trust": {
       "type": "object",
-      "required": [
-        "targetItemId",
-        "readRunId"
-      ],
       "properties": {
-        "targetItemId": {
-          "type": "string",
-          "minLength": 3,
-          "maxLength": 191
-        },
-        "readRunId": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "evidenceBundle": {
-          "type": "object",
-          "required": [
-            "readProof",
-            "interactionProof"
-          ],
-          "properties": {
-            "readProof": {
-              "type": "object",
-              "required": [
-                "readRunId"
-              ],
-              "properties": {
-                "readRunId": {
-                  "type": "string",
-                  "format": "uuid"
-                }
-              },
-              "additionalProperties": false
-            },
-            "interactionProof": {
-              "type": "object",
-              "required": [
-                "protocol",
-                "interactionId",
-                "jobId",
-                "requester",
-                "provider",
-                "requestedAt"
-              ],
-              "properties": {
-                "protocol": {
-                  "type": "string",
-                  "const": "acp"
-                },
-                "interactionId": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 191
-                },
-                "jobId": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 191
-                },
-                "runId": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 191
-                },
-                "receiptId": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 191
-                },
-                "requester": {
-                  "$ref": "#/$defs/principal"
-                },
-                "provider": {
-                  "$ref": "#/$defs/principal"
-                },
-                "requestedAt": {
-                  "type": [
-                    "string",
-                    "number"
-                  ]
-                },
-                "completedAt": {
-                  "type": [
-                    "string",
-                    "number"
-                  ]
-                }
-              },
-              "additionalProperties": false
-            },
-            "deliveryProof": {
-              "type": "object",
-              "required": [
-                "artifactHash",
-                "hashAlg",
-                "deliveredAt"
-              ],
-              "properties": {
-                "artifactHash": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 130
-                },
-                "hashAlg": {
-                  "type": "string",
-                  "enum": [
-                    "sha256",
-                    "keccak256"
-                  ]
-                },
-                "artifactUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "maxLength": 2048
-                },
-                "deliveredAt": {
-                  "type": [
-                    "string",
-                    "number"
-                  ]
-                }
-              },
-              "additionalProperties": false
-            },
-            "settlementProof": {
-              "type": "object",
-              "required": [
-                "kind",
-                "reference",
-                "amount",
-                "currency",
-                "payer",
-                "payee",
-                "paidAt"
-              ],
-              "properties": {
-                "kind": {
-                  "type": "string",
-                  "enum": [
-                    "onchain",
-                    "escrow",
-                    "pg"
-                  ]
-                },
-                "reference": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 191
-                },
-                "chainId": {
-                  "type": "integer",
-                  "minimum": 1
-                },
-                "amount": {
-                  "type": "number",
-                  "exclusiveMinimum": 0
-                },
-                "currency": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 32
-                },
-                "payer": {
-                  "$ref": "#/$defs/principal"
-                },
-                "payee": {
-                  "$ref": "#/$defs/principal"
-                },
-                "paidAt": {
-                  "type": [
-                    "string",
-                    "number"
-                  ]
-                }
-              },
-              "additionalProperties": false
-            },
-            "counterpartyAttestation": {
-              "type": "array",
-              "maxItems": 8,
-              "items": {
-                "type": "object",
-                "required": [
-                  "signerRole",
-                  "signer",
-                  "nonce",
-                  "issuedAt",
-                  "expiresAt",
-                  "message",
-                  "signature",
-                  "sigType"
-                ],
-                "properties": {
-                  "signerRole": {
-                    "type": "string",
-                    "enum": [
-                      "requester",
-                      "provider",
-                      "observer"
-                    ]
-                  },
-                  "signer": {
-                    "$ref": "#/$defs/principal"
-                  },
-                  "nonce": {
-                    "type": "string",
-                    "minLength": 8,
-                    "maxLength": 128
-                  },
-                  "issuedAt": {
-                    "type": [
-                      "string",
-                      "number"
-                    ]
-                  },
-                  "expiresAt": {
-                    "type": [
-                      "string",
-                      "number"
-                    ]
-                  },
-                  "message": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 2048
-                  },
-                  "signature": {
-                    "type": "string",
-                    "pattern": "^0x[0-9a-fA-F]+$"
-                  },
-                  "sigType": {
-                    "type": "string",
-                    "enum": [
-                      "eip712",
-                      "eth_sign",
-                      "onchain_tx"
-                    ]
-                  },
-                  "chainId": {
-                    "type": "integer",
-                    "minimum": 1
-                  },
-                  "reference": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 191
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          },
-          "additionalProperties": false
-        },
         "workflowProof": {
           "type": "object",
-          "description": "Legacy compatibility block. Will be removed after migration window.",
-          "required": [
-            "protocol",
-            "jobId",
-            "status",
-            "completionRef"
-          ],
           "properties": {
             "protocol": {
               "type": "string",
-              "enum": [
-                "acp"
-              ]
+              "enum": ["acp"]
             },
             "jobId": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 191
+              "type": "string"
             },
             "status": {
               "type": "string",
-              "const": "completed"
+              "enum": ["completed"]
             },
             "completionRef": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 512
+              "type": "string"
             }
           },
+          "required": ["protocol", "jobId", "status", "completionRef"],
           "additionalProperties": false
         }
       },
-      "additionalProperties": false
-    }
-  },
-  "$defs": {
-    "principal": {
-      "type": "object",
-      "required": [
-        "kind",
-        "id"
-      ],
-      "properties": {
-        "kind": {
-          "type": "string",
-          "enum": [
-            "wallet",
-            "agent",
-            "service"
-          ]
-        },
-        "id": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 191
-        },
-        "chainId": {
-          "type": "integer",
-          "minimum": 1
-        }
-      },
-      "additionalProperties": false
+      "additionalProperties": true
     }
   },
   "additionalProperties": true

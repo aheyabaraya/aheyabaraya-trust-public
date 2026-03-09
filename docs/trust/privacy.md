@@ -1,20 +1,22 @@
-# AHEYA Trust Privacy Policy (Product-level)
+# AHEYA Trust Privacy
+
+AHEYA Trust stores only the minimum metadata needed for public trust export and authenticated write verification.
 
 ## Principles
-1. No bulk ingest.
-2. No scraping.
-3. No raw candidate payload persistence.
-4. Minimal verification metadata retention up to 24 hours for read/write linkage.
 
-## What is retained
-1. `readRun` linkage metadata for write verification:
-1. key prefix
-2. actor snapshot
-3. candidate/recommended item IDs
-4. expiry timestamp
-2. Signal evidence metadata needed for verification/replay prevention.
+- no provider secret ingestion
+- no bulk ingest
+- no scraping beyond documented public metadata
+- minimal verification metadata retention
+- public export only for public listed trust items
 
-## What is not retained
-1. Raw third-party marketplace dumps.
-2. Full external candidate payload blobs for long-term storage.
-3. External provider secrets in connector records.
+## Verification metadata
+
+- `readRun` linkage metadata is retained for write verification.
+- Signal evidence metadata is retained for verification and replay prevention.
+- Public summaries, accepted feedback rows, and badge export are derived from stored trust signals and summary snapshots.
+
+## Public vs non-public
+
+- Public profile links supplied for listed trust items may appear in public Trust surfaces.
+- API key security metadata and challenge verification details are retained for security and account management, not as public contract fields.
