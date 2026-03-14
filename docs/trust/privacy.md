@@ -1,22 +1,16 @@
-# AHEYA Trust Privacy
+# AHEYA Trust Privacy Note
 
-AHEYA Trust stores only the minimum metadata needed for public trust export and authenticated write verification.
+This note describes only the public exposure boundary for Trust API integrations.
 
-## Principles
+## Public exposure
 
-- no provider secret ingestion
-- no bulk ingest
-- no scraping beyond documented public metadata
-- minimal verification metadata retention
-- public export only for public listed trust items
+- Public responses include only public listed Trust surfaces.
+- Secret material and internal security metadata are not part of the public response schema.
+- Public signals and public feedback client payloads include accepted agent support intent rows, but exclude internal account IDs, owner internal user IDs, and proof/review internals.
+- Public `signals` responses may include accepted human-authored feedback rows, but not raw support receipt or raw proof-review fields.
+- Internal storage, verification, and retention controls are intentionally not documented here.
 
-## Verification metadata
+## Contract source
 
-- `readRun` linkage metadata is retained for write verification.
-- Signal evidence metadata is retained for verification and replay prevention.
-- Public summaries, accepted feedback rows, and badge export are derived from stored trust signals and summary snapshots.
-
-## Public vs non-public
-
-- Public profile links supplied for listed trust items may appear in public Trust surfaces.
-- API key security metadata and challenge verification details are retained for security and account management, not as public contract fields.
+Use `/api/v1/trust/openapi.json` as the canonical machine-readable integration contract.
+Public snapshot repository: `https://github.com/aheyabaraya/aheyabaraya-trust-public`

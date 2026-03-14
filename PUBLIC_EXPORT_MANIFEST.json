@@ -1,9 +1,8 @@
 {
-  "generatedAt": "2026-03-09T12:17:47.115Z",
+  "generatedAt": "2026-03-14T01:56:46.597Z",
   "sourceBranch": "test",
-  "fileCount": 9,
+  "fileCount": 8,
   "files": [
-    "CHANGELOG.md",
     "README.md",
     "docs/public/README.md",
     "docs/specs/trust/aheya-trust-acp-agent-extension.schema.json",

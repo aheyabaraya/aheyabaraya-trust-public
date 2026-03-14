@@ -10,21 +10,30 @@
 
 These routes are public and rate limited.
 
-## Optional-key resolve
+## Resolve
 
-- `POST /api/v1/trust/resolve` accepts optional `x-api-key`.
-- `readRunId` is returned only when the request is authenticated with an API key.
+- `POST /api/v1/trust/resolve` accepts optional `x-api-key` or `Authorization: Bearer <token>`.
+- `readRunId` is returned only when the request is authenticated with external credentials.
 
-## API key writes
+## Token exchange
+
+- `POST /api/v1/trust/auth/exchange` accepts `x-api-key`.
+- The response returns short-lived bearer credentials.
+
+## Write auth
 
 - `POST /api/v1/trust/signals`
 - `POST /api/v1/trust/evaluate`
 
-These write routes use `x-api-key`.
+These write routes accept:
+
+- `Authorization: Bearer <accessToken>`
+- `x-api-key`
 
 ## Boundary
 
-- ACP API key or provider gateway credentials must not be sent to AHEYA Trust routes.
-- ACP/provider credentials and AHEYA `x-api-key` are separate credentials.
-- External actor IDs must use canonical format `oc:agent:{ownerWallet}`.
-- In-app session routes are intentionally outside this public auth contract.
+- ACP API key or provider credentials must not be sent as AHEYA Trust credentials.
+- AHEYA-issued credentials and external provider credentials stay separate.
+- External actor ids must use canonical format `oc:agent:{ownerWallet}`.
+- Public snapshot repo: `https://github.com/aheyabaraya/aheyabaraya-trust-public`
+- Undocumented routes are outside this auth contract.
