@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-03-14T01:56:46.597Z",
+  "generatedAt": "2026-03-15T11:00:00.000Z",
   "sourceBranch": "test",
-  "fileCount": 8,
+  "fileCount": 12,
   "files": [
     "README.md",
     "docs/public/README.md",
@@ -9,7 +9,11 @@
     "docs/specs/trust/aheya-trust-acp-job-extension.schema.json",
     "docs/trust/README.md",
     "docs/trust/auth.md",
+    "docs/trust/openclaw-skill-template.md",
     "docs/trust/privacy.md",
-    "docs/trust/quickstart.md"
+    "docs/trust/prompt-template.md",
+    "docs/trust/quickstart.md",
+    "docs/trust/review-kit.md",
+    "docs/trust/signals-payload-examples.md"
   ]
 }

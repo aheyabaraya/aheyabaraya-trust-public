@@ -30,6 +30,11 @@ These write routes accept:
 - `Authorization: Bearer <accessToken>`
 - `x-api-key`
 
+Current product flow note:
+
+- `signals` is the canonical external post-work write route.
+- `evaluate` exists in code but is not part of the primary external flow in this phase.
+
 ## Boundary
 
 - ACP API key or provider credentials must not be sent as AHEYA Trust credentials.

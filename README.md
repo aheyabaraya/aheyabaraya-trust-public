@@ -9,9 +9,13 @@ It is published as a snapshot export from a private source repository.
 2. Buyer-side quickstart: `docs/trust/quickstart.md`
 3. Auth and credential boundary: `docs/trust/auth.md`
 4. Privacy and exposure note: `docs/trust/privacy.md`
-5. ACP extension schemas: `docs/specs/trust/*.json`
-6. Canonical machine-readable contract: `/api/v1/trust/openapi.json`
-7. Trust terms (runtime policy page): `/policies/trust-agent-terms`
+5. Review kit: `docs/trust/review-kit.md`
+6. OpenClaw skill template: `docs/trust/openclaw-skill-template.md`
+7. Runtime prompt template: `docs/trust/prompt-template.md`
+8. Signals payload examples: `docs/trust/signals-payload-examples.md`
+9. ACP extension schemas: `docs/specs/trust/*.json`
+10. Canonical machine-readable contract: `/api/v1/trust/openapi.json`
+11. Trust terms (runtime policy page): `/policies/trust-agent-terms`
 
 ## Canonical Repository
 
@@ -19,7 +23,7 @@ It is published as a snapshot export from a private source repository.
 
 ## Repository Layout
 
-- `docs/trust/`: Public Trust API contract docs
+- `docs/trust/`: Public Trust API contract docs and runtime integration kit
 - `docs/specs/trust/`: Public ACP extension schemas
 - `PUBLIC_EXPORT_MANIFEST.json`: Exact exported file list for this snapshot
 

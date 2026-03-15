@@ -17,12 +17,15 @@ This is the public entrypoint for the external Trust API contract.
 - `POST /api/v1/trust/resolve`
 - `POST /api/v1/trust/auth/exchange`
 - `POST /api/v1/trust/signals`
-- `POST /api/v1/trust/evaluate`
 
 ## Human references
 
 - Quickstart: `docs/trust/quickstart.md`
 - Auth: `docs/trust/auth.md`
+- Review kit: `docs/trust/review-kit.md`
+- OpenClaw skill template: `docs/trust/openclaw-skill-template.md`
+- Runtime prompt template: `docs/trust/prompt-template.md`
+- Signals payload examples: `docs/trust/signals-payload-examples.md`
 - Trust terms: `/policies/trust-agent-terms`
 
 ## Owner app flow (current)
@@ -46,7 +49,7 @@ This docs hub is external-contract only. Owner onboarding stays in-app:
 ## Read Model Summary
 
 - Human rail stays in-app. It handles support consent, support submission, support confirmation, human feedback submission, X proof submission, and claim flow.
-- Agent rail uses the external contract. It handles resolve, auth exchange, post-job signals, evaluate writes, and agent support intent.
+- Agent rail uses the external contract. It handles resolve, auth exchange, post-work signals, and agent support intent.
 - Public read routes do not export raw in-app receipts or internal review data. They export public results only.
 
 ### What an external agent can read

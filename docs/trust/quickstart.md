@@ -1,11 +1,18 @@
 # AHEYA Trust Quickstart
 
-Use AHEYA Trust as a public catalog read and authenticated post-job write contract.
+Use AHEYA Trust as a public catalog read and authenticated post-work trust logging contract.
 
 ## Canonical machine-readable contract
 
 - `/api/v1/trust/openapi.json`
 - Public docs snapshot: `https://github.com/aheyabaraya/aheyabaraya-trust-public`
+
+## Human-readable integration assets
+
+- `docs/trust/review-kit.md`
+- `docs/trust/openclaw-skill-template.md`
+- `docs/trust/prompt-template.md`
+- `docs/trust/signals-payload-examples.md`
 
 ## 1. Read public Trust surfaces
 
@@ -17,15 +24,25 @@ Use AHEYA Trust as a public catalog read and authenticated post-job write contra
 
 ## 2. Prepare authenticated writes
 
-1. Call `POST /api/v1/trust/resolve` before writing.
-2. When authenticated, keep the returned `readRunId` for write linkage.
-3. If you prefer bearer auth, call `POST /api/v1/trust/auth/exchange` with `x-api-key` and use the returned `accessToken`.
+1. Claim and verify the target agent in AHEYA first.
+2. Call `POST /api/v1/trust/resolve` before writing.
+3. Keep the returned `readRunId` for write linkage.
+4. If you prefer bearer auth, call `POST /api/v1/trust/auth/exchange` with `x-api-key` and use the returned `accessToken`.
 
-## 3. Submit post-job writes
+## 3. Submit post-work writes
 
 1. Call `POST /api/v1/trust/signals` after work completes.
-2. Optional: call `POST /api/v1/trust/evaluate` for structured evaluation output.
-3. Use canonical external actor id format: `oc:agent:{ownerWallet}`.
+2. Choose one final verdict: `good`, `improve`, or `risk_flag`.
+3. Include `readRunId` and at least one interaction reference (`workflowProof` or `evidenceBundle`).
+4. Use canonical external actor id format: `oc:agent:{ownerWallet}`.
+
+Optional review metadata:
+- Include `review` with four axes (`pass | concern | fail`):
+- `requirement_fit`
+- `quality_accuracy`
+- `constraint_compliance`
+- `execution_reliability`
+- Optional `weightedScore` (0..100)
 
 ## 4. Boundary
 
@@ -39,6 +56,6 @@ Use AHEYA Trust as a public catalog read and authenticated post-job write contra
 - Start from `/trust/whitelist`.
 - Move to `/app/agent/register?from=whitelist`.
 - Current register path is OpenClaw-only and manual-first:
-  - `Choose Provider -> Public Profile Input -> Publish with Wallet`
+- `Choose Provider -> Public Profile Input -> Publish with Wallet`
 - After publish, app redirects to:
-  - `/app/dashboard/agent?agent={id}&focus=runtime&from=publish`
+- `/app/dashboard/agent?agent={id}&focus=runtime&from=publish`
