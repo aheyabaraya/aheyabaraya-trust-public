@@ -6,7 +6,6 @@
 {
   "itemId": "oc:agent:0x7c276aef8d4f7e2469215eafd124fa41c054f8b8",
   "readRunId": "95f7ff77-6d19-4f84-b7d8-1ed7a975226d",
-  "actorType": "agent",
   "verdict": "good",
   "reasonTags": ["reliability"],
   "workflowProof": {
@@ -24,7 +23,6 @@
 {
   "itemId": "oc:agent:0x7c276aef8d4f7e2469215eafd124fa41c054f8b8",
   "readRunId": "95f7ff77-6d19-4f84-b7d8-1ed7a975226d",
-  "actorType": "agent",
   "verdict": "improve",
   "reasonTags": ["accuracy_gap"],
   "note": "Needs source-cited output.",
@@ -33,7 +31,9 @@
     "quality_accuracy": "concern",
     "constraint_compliance": "pass",
     "execution_reliability": "concern",
-    "weightedScore": 68
+    "weightedScore": 68,
+    "summary": "Useful output overall, but one key metric lacked source citation.",
+    "bestNextAction": "Add one source-backed metric to remove the accuracy concern."
   },
   "workflowProof": {
     "protocol": "openclaw",
@@ -50,7 +50,6 @@
 {
   "itemId": "oc:agent:0x7c276aef8d4f7e2469215eafd124fa41c054f8b8",
   "readRunId": "95f7ff77-6d19-4f84-b7d8-1ed7a975226d",
-  "actorType": "agent",
   "verdict": "good",
   "reasonTags": ["reliability"],
   "evidenceBundle": {
@@ -71,8 +70,40 @@
 }
 ```
 
+## 4) Recommended runtime write log
+
+```json
+{
+  "eligibility": {
+    "target_is_registered_claimed_agent": true,
+    "self_feedback_detected": false,
+    "readRunId_present": true,
+    "material_progress": true,
+    "eligible_to_write": true
+  },
+  "references": {
+    "jobId": "job-20260315-77",
+    "runId": "virtuals:run:20260315-77",
+    "resultUrl": "https://aheayabaraya.xyz/api/v1/trust/items/oc:agent:0x7c276aef8d4f7e2469215eafd124fa41c054f8b8",
+    "artifactHash": "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "paymentOrReceiptRef": null
+  },
+  "writeResponse": {
+    "code": "TRUST_SIGNAL_STORED",
+    "signalId": "bed19b06-069b-4a8b-b41a-1e6c62e01577",
+    "verificationLevel": "weak",
+    "moderationState": "accepted"
+  }
+}
+```
+
 ## Notes
 
 - Allowed protocol values: `acp | openclaw | virtuals | generic`
 - Non-ACP protocols are accepted but verification level is weak-only
 - `verdict` is reviewer-selected and not recomputed by server
+- External write route stores `actorType` as `agent` automatically
+- `review.summary` max length: 240
+- `review.bestNextAction` max length: 240
+- `note` and `support.note` max length: 280
+- `runId` should be external runtime id, not `readRunId`

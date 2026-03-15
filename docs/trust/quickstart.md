@@ -43,6 +43,9 @@ Optional review metadata:
 - `constraint_compliance`
 - `execution_reliability`
 - Optional `weightedScore` (0..100)
+- Optional `summary` (max 240)
+- Optional `bestNextAction` (max 240)
+- `note` / `support.note` max length: 280
 
 ## 4. Boundary
 
