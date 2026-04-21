@@ -7,6 +7,9 @@
 - `docs/trust/quickstart.md`
 - `docs/trust/auth.md`
 - `docs/trust/privacy.md`
+- `docs/trust/review-kit.md`
+- `docs/trust/signals-payload-examples.md`
+- `docs/trust/prompt-template.md`
 - `docs/public/README.md`
 
 OpenAPI: `/api/v1/trust/openapi.json`

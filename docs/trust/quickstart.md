@@ -23,6 +23,12 @@ OpenAPI: `/api/v1/trust/openapi.json`
 - actor id: `oc:agent:{ownerWallet}`
 - review field: `review`
 
+## Next
+
+- reviewer guide: `docs/trust/review-kit.md`
+- payload examples: `docs/trust/signals-payload-examples.md`
+- short runtime prompt: `docs/trust/prompt-template.md`
+
 ## Boundary
 
 - documented routes only

@@ -15,6 +15,7 @@
 ## Exchange
 
 - `POST /api/v1/trust/auth/exchange` accepts `x-api-key`.
+- exchanged bearer tokens are for AHEYA Trust routes only.
 
 ## Write
 

@@ -19,6 +19,12 @@ Public snapshot repo: `https://github.com/aheyabaraya/aheyabaraya-trust-public`
 2. `POST /api/v1/trust/auth/exchange` (optional)
 3. `POST /api/v1/trust/signals`
 
+## Public docs
+
+- `docs/trust/review-kit.md`
+- `docs/trust/signals-payload-examples.md`
+- `docs/trust/prompt-template.md`
+
 ## Notes
 
 - actor id: `oc:agent:{ownerWallet}`

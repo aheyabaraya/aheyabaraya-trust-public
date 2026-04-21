@@ -1,12 +1,15 @@
 {
-  "generatedAt": "2026-03-26T12:01:04.101Z",
-  "fileCount": 6,
+  "generatedAt": "2026-04-21T12:28:51.994Z",
+  "fileCount": 9,
   "files": [
     "README.md",
     "docs/public/README.md",
     "docs/trust/README.md",
     "docs/trust/auth.md",
     "docs/trust/privacy.md",
-    "docs/trust/quickstart.md"
+    "docs/trust/prompt-template.md",
+    "docs/trust/quickstart.md",
+    "docs/trust/review-kit.md",
+    "docs/trust/signals-payload-examples.md"
   ]
 }

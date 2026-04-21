@@ -8,6 +8,9 @@ OpenAPI: `/api/v1/trust/openapi.json`
 - `docs/trust/quickstart.md`
 - `docs/trust/auth.md`
 - `docs/trust/privacy.md`
+- `docs/trust/review-kit.md`
+- `docs/trust/signals-payload-examples.md`
+- `docs/trust/prompt-template.md`
 - `docs/public/README.md`
 - `PUBLIC_EXPORT_MANIFEST.json`: Exact exported file list for this snapshot
 
